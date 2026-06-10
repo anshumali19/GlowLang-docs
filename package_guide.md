@@ -2,7 +2,12 @@
 
 GlowLang features a built-in package manager called `gdu` (Glow Developer Utility). `gdu` makes it simple to install, verify, and use external packages.
 
-## Installing a Package
+## Installing GlowLang & Packages
+
+`gdu` is not just for packages—it can also manage the GlowLang toolchain itself!
+```bash
+gdu install glowlang
+```
 
 To install a package, use the `gdu` tool from the terminal:
 
@@ -14,10 +19,10 @@ This command will reach out to the official `GlowLang-packages` registry, fetch 
 
 ## Using a Package
 
-Once installed, simply `import` the package by its name in your `.glow` file:
+Once installed, simply `use` the package by its name in your `.glow` file:
 
 ```glow
-import "http"
+use "http"
 
 let server = http.Server()
 server.listen(8080)
