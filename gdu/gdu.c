@@ -523,7 +523,7 @@ int install_package(const char *name, const char *version, const char *url) {
     char cmd[2048];
     /* Try fetching the single .glow file directly from the main branch of the repository */
     snprintf(cmd, sizeof(cmd),
-        "curl -sf --max-time 10 'https://raw.githubusercontent.com/anshumali19/%s/main/%s.glow' -o '%s' 2>/dev/null",
+        "curl -sf --max-time 10 'https://raw.githubusercontent.com/anshumali19/GlowLang-packages/main/packages/%s/%s.glow' -o '%s' 2>/dev/null",
         name, name, pkg_path);
         
     if (system(cmd) == 0 && file_exists(pkg_path) && file_size(pkg_path) > 0) {
