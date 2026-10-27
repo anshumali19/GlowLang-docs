@@ -1,38 +1,61 @@
 # GlowLang Package Guide
 
-GlowLang features a built-in package manager called `gdu` (Glow Developer Utility). `gdu` makes it simple to install, verify, and use external packages.
+GlowLang's package manager is `gdu`, the Glow Dependency Utility. It installs packages from the
+[GlowLang-packages](https://github.com/anshumali19/GlowLang-packages) registry and can install the
+GlowLang toolchain itself.
 
-## Installing GlowLang & Packages
+## Installing GlowLang
 
-`gdu` is not just for packages—it can also manage the GlowLang toolchain itself!
 ```bash
 gdu install glowlang
 ```
 
-To install a package, use the `gdu` tool from the terminal:
+This downloads the latest published release into `~/.glowlang/bin` and adds it to your PATH.
+
+## Installing a package
+
+Run `gdu` inside your project folder:
 
 ```bash
-gdu install http
+gdu install json
 ```
 
-This command will reach out to the official `GlowLang-packages` registry, fetch the package, and install it into your local `~/.glow_pkg` directory.
+`gdu` downloads `json.glow` into the project's `.glow_pkg/` folder and records `json@1.0.0` in
+`Glow.deps`. Running `gdu install` with no name installs everything listed in `Glow.deps`;
+`gdu resolve` writes `Glow.lock` with SHA-256 checksums, and `gdu verify` checks them.
 
-## Using a Package
+## Using a package
 
-Once installed, simply `use` the package by its name in your `.glow` file:
+Load it by name with `use`:
+
+```glow
+use "json"
+
+let data = json.parse('{"user": {"name": "Ada"}}')
+show jpath(data).get("user.name")
+```
+
+`use "name"` looks for `name.glow` next to your program first, then for an installed package in
+`.glow_pkg/`, then in the `lib/` folder that comes with GlowLang.
+
+The `http` package is an HTTP **client**:
 
 ```glow
 use "http"
 
-let server = http.Server()
-server.listen(8080)
+let client = HttpClient()
+let response = client.get("http://localhost:8080/hello")
+show response.status, response.body
 ```
 
-## Creating Your Own Package
+(To serve HTTP, use the built-in `http.listen` / `http.accept` / `http.send`.)
 
-1. Create a GitHub repository for your code.
-2. Ensure your entry point is clearly defined.
-3. Write a `package.json` file.
-4. Submit a Pull Request to [GlowLang-packages](https://github.com/anshumali19/GlowLang-packages).
+## Publishing a package
 
-If approved by the Core Maintainers, your package will be globally available via `gdu install <your_package>`!
+1. Fork [GlowLang-packages](https://github.com/anshumali19/GlowLang-packages).
+2. Add `packages/<name>/<name>.glow`, a `package.json` and a `README.md`.
+3. Check it with `gdu/package_lint.glow` and test it with the current GlowLang build.
+4. Open a pull request (commits signed off with `git commit -s`).
+
+Once a maintainer merges it, anyone can install it with `gdu install <name>`. The full checklist
+is in the registry's [CONTRIBUTING.md](https://github.com/anshumali19/GlowLang-packages/blob/main/CONTRIBUTING.md).

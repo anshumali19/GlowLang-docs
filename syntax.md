@@ -1,10 +1,11 @@
 # GlowLang Syntax Guide
 
-GlowLang is designed to be deeply intuitive and readable, blending the power of a modern systems-capable VM with the expressive elegance of natural language.
+GlowLang reads close to plain English while running on a bytecode VM with a JIT compiler. This guide covers the essentials; the full [language reference](https://github.com/anshumali19/GlowLang-core/blob/main/docs/language_reference.md) has everything else.
 
 ## Key Features
 * **No Semicolons**: Statements end at the end of the line.
 * **Natural Operators**: Read code like English using `when`, `is`, `is not`, `is in`, and `every`.
+* **Ends with `end`**: Blocks open with `:` and close with `end`.
 * **Simple Output**: Use `show` to print anything without brackets. 
 
 ---
@@ -25,10 +26,10 @@ You can output data to the console using the `show` keyword. You do not need to 
 show "Processing numbers..."
 show "x is:", x
 ```
-*(Note: If you are transitioning from other languages like Python, `print("text")` is also fully supported.)*
+*(`print` works as another name for `show`. Text can be joined with `+`, or written as an f-string: `show f"x is {x}"`.)*
 
 ## 3. Conditionals (When)
-Instead of traditional `if` statements, GlowLang uses the beautiful `when` keyword, paired with natural English operators. Conditionals are closed with the `end` keyword.
+Conditionals use `when` (or `if`), with `eif` / `otherwise` (or `else`) for the other branches. `is` and `is not` mean `==` and `!=`. Conditionals are closed with the `end` keyword.
 
 ```glow
 let x = 5
@@ -59,7 +60,7 @@ end
 ```
 
 ## 4. Loops (Every)
-Loops in GlowLang use the `every` keyword. 
+Loops in GlowLang use the `every` keyword (or `for each`); `from 1 to 5` includes both ends. 
 
 ```glow
 show "Looping from 1 to 5:"
@@ -90,10 +91,14 @@ show "c.val after inc:", c.val
 ```
 
 ## 6. Functional Operations
-GlowLang has built-in functional utilities like `keep`, `apply`, `avg`, `root`, and `dist`. You can define inline functions using `lambda`.
+Lists have `map`, `filter` and `reduce` methods, and the `natural` library adds English-style helpers:
+`keep`, `apply`, `even`, `avg`, `root` and `dist`. Inline functions are written with `lambda`.
 
 ```glow
+use "natural"
+
 let nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+show "Squares:", nums.map(lambda(n): n * n)
 
 # Filter list (keep evens)
 let evens = keep(lambda(n): even(n), nums)

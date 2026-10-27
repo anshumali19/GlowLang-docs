@@ -1,14 +1,15 @@
-# Official Examples
+# Examples
 
-Want to see GlowLang in action? We maintain a dedicated repository full of production-ready examples to help you understand the language's capabilities.
+Complete example programs live in the
+**[GlowLang-examples](https://github.com/anshumali19/GlowLang-examples)** repository:
 
-## The GlowLang-examples Repository
+* **HTTP server** — routes and responses with the built-in `http` module and a blueprint.
+* **JSON** — parsing, producing, path queries and pretty-printing.
+* **Database** — creating, filling and querying a SQLite database with the `database` package.
+* **AI** — SIMD matrix multiplication, a small neural network, and training a linear model on a
+  CSV file.
+* **Native modules** — JSON, BLAKE3 hashing, INT4 weights, socket polling and PNG headers in one
+  pipeline.
 
-Head over to **[GlowLang-examples](https://github.com/anshumali19/GlowLang-examples)** to see complete code for:
-
-*   **HTTP Servers**: Building APIs and serving web content using the built-in networking.
-*   **Database Connectors**: Using GlowLang's native SQLite ORM capabilities.
-*   **JSON Parsers**: Handling structured data.
-*   **AI/ML**: Leveraging GlowLang's native SIMD Tensors.
-
-These examples are fully documented and heavily commented to act as secondary tutorials.
+Each example runs with the current GlowLang build; the repository README lists which ones need a
+package installed with `gdu` first.

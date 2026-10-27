@@ -1,19 +1,47 @@
 # Frequently Asked Questions
 
 ### Is GlowLang interpreted or compiled?
-GlowLang is both! It compiles your code into highly optimized bytecode, which is then executed by our custom Virtual Machine. For performance-critical loops, GlowLang features an experimental JIT (Just-In-Time) compiler that converts bytecode directly into native machine instructions at runtime!
+Both. Source code is compiled to bytecode, which a register-based virtual machine runs. Functions
+that run often, and loops that run long, are compiled at runtime into native x86-64 machine code
+by a JIT compiler; on other CPUs everything runs in the interpreter. Anything the compiled code
+cannot handle continues in the interpreter with the same result.
+
+### How fast is it?
+On the benchmark set in the core repository, GlowLang finishes 1.4× to 5.2× faster than CPython
+3.13 (whole-program time, identical output required). It is much slower than compiled languages
+such as C, Go or Rust. The numbers and the script that produces them are in
+[benchmarks/RESULTS.md](https://github.com/anshumali19/GlowLang-core/blob/main/benchmarks/RESULTS.md).
 
 ### Why does GlowLang not use semicolons?
-We believe code should be as clean and readable as possible. Semicolons are visual clutter. In GlowLang, statements naturally end at the end of the line.
+Statements end at the end of the line. Inside open brackets `( [ {` a statement can continue onto
+the next lines.
 
 ### How do I print something?
-Use the `show` keyword! It is cleaner than traditional print statements.
-`show "Hello World"`
+Use `show`:
+```glow
+show "Hello World"
+show "x is", x
+```
+`print` is accepted as another name for `show`.
 
-However, if you are accustomed to Python or C, `print("Hello World")` is perfectly valid and supported.
+### Can I do machine learning in GlowLang?
+Yes, at a small scale. The `tensor` module has SIMD-accelerated element-wise operations, dot
+products and matrix multiplication, and the bundled libraries (`ai`, `glowtorch`, `dataframe`)
+provide layers, training loops and CSV loading. CUDA kernels are compiled in only when GlowLang is
+built on a machine with NVIDIA's `nvcc`.
 
-### Can I do Machine Learning in GlowLang?
-Absolutely. GlowLang was built with ML in mind. It features a native SIMD-accelerated Tensor type, meaning you don't need clunky C++ wrappers just to do fast matrix multiplication. We are also actively developing CUDA GPU acceleration.
+### Can threads use several CPU cores?
+Not yet. Threads share a global interpreter lock, so they overlap waiting (network, sleep), not
+computation. See [Concurrency](concurrency_and_simd.md).
 
 ### How do I contribute?
-If you want to write standard packages, submit them to `GlowLang-packages`. If you want to contribute to the core C engine, you will need to apply to become a Trusted Maintainer, as the core repository (`GlowLang-core`) is strictly private to ensure stability and vision alignment.
+All repositories are public and accept pull requests:
+* the language, VM, JIT and standard library: [GlowLang-core](https://github.com/anshumali19/GlowLang-core)
+  (see its CONTRIBUTING.md);
+* packages: [GlowLang-packages](https://github.com/anshumali19/GlowLang-packages);
+* examples and documentation: GlowLang-examples and GlowLang-docs.
+
+### Can I use GlowLang commercially?
+Yes. GlowLang is licensed under the Apache License 2.0 with the Commons Clause: you may use it for
+any purpose and sell the programs you write with it, but GlowLang itself may not be sold or
+patented. See the [LICENSE](https://github.com/anshumali19/GlowLang-core/blob/main/LICENSE).

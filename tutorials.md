@@ -75,4 +75,8 @@ when my_counter.val is in target_values:
 end
 ```
 
-Run it using the GlowLang compiler!
+Run it:
+
+```bash
+glowlang run app.glow
+```
