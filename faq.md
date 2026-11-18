@@ -8,7 +8,7 @@ compiled code cannot handle continues in the interpreter with the same result. M
 by a generational garbage collector.
 
 ### How fast is it?
-On the benchmark set in the core repository, GlowLang 1.8.0 finishes 1.4× to 8.1× faster than
+On the benchmark set in the core repository, GlowLang 1.9.0 finishes 1.4× to 7.9× faster than
 CPython 3.14 (whole-program time including startup, identical output required). It is much slower
 than compiled languages such as C, Go or Rust. The table is in the
 [core README](https://github.com/anshumali19/GlowLang-core#-performance), and
