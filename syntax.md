@@ -108,3 +108,105 @@ show "Evens:", evens
 let doubled = apply(lambda(n): n * 2, evens)
 show "Doubled:", doubled
 ```
+
+## 7. Comments and Numbers
+Comments start with `#` and run to the end of the line; `/* ... */` spans lines. `//` is floor
+division, as in Python, and integers never overflow.
+
+```glow
+# a comment
+show 7 // 2, -7 // 2, 7 % 3      # 3 -4 1
+show 2 ** 100                     # 1267650600228229401496703205376
+show 0xff, 0b1010, 1_000_000      # 255 10 1000000
+show 6 & 3, 6 | 3, 1 << 10        # 2 7 1024
+```
+
+## 8. Functions: Defaults, Named Arguments, `...rest` and `...spread`
+
+```glow
+func order(item, qty = 1, gift = false):
+    return f"{qty} x {item}, gift: {gift}"
+end
+show order("tea", gift = true)    # 1 x tea, gift: true
+
+func total(first, ...rest):
+    return first + sum(rest)
+end
+let more = [2, 3, 4]
+show total(1, ...more)            # 10
+```
+
+## 9. Unpacking
+
+```glow
+let a, b = 1, 2
+a, b = b, a
+let first, ...others = [10, 20, 30]
+show a, b, first, others          # 2 1 10 [20, 30]
+```
+
+## 10. Match and Enums
+
+```glow
+enum Level: LOW, MEDIUM, HIGH
+
+func describe(value):
+    match value:
+        case 0:
+            return "zero"
+        case 1, 2, 3:
+            return "small"
+        case [head, ...tail]:
+            return f"a list starting with {head}"
+        otherwise:
+            return "something else"
+    end
+end
+show describe(2), describe([5, 6]), Level.HIGH    # small a list starting with 5 Level.HIGH
+```
+
+## 11. Sets and Comprehensions
+
+```glow
+let tags = {"web", "api", "web"}
+show len(tags), "api" in tags                    # 2 true
+show {1, 2, 3} & {2, 3, 4}                       # {2, 3}
+show [n * n for each n in [1, 2, 3, 4] when n % 2 == 0]   # [4, 16]
+show {w: len(w) for each w in ["glow", "lang"]}           # {"glow": 4, "lang": 4}
+```
+
+## 12. Working with `none`
+`a ?? b` gives `b` only when `a` is `none`, and `a?.b` gives `none` instead of an error when `a`
+is `none`.
+
+```glow
+let user = none
+show user?.name ?? "guest"        # guest
+let port = none
+port ??= 8080
+show port                         # 8080
+```
+
+## 13. Errors: `try`, `catch`, `finally`
+
+```glow
+func parse_age(text):
+    try:
+        let n = int(text)
+        when n < 0:
+            throw "age cannot be negative"
+        end
+        return n
+    catch e:
+        show "bad input:", e
+        return none
+    finally:
+        show "checked", text
+    end
+end
+show parse_age("41")
+show parse_age("-3")
+```
+
+The [language reference](https://github.com/anshumali19/GlowLang-core/blob/main/docs/language_reference.md)
+covers every statement, operator and built-in function.
