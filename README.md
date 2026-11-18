@@ -3,13 +3,13 @@
 Guides for [GlowLang](https://github.com/anshumali19/GlowLang-core), a fast, free programming
 language with Python-like, natural-language syntax: a bytecode VM with x86-64 and ARM64 JITs, a
 generational garbage collector, and built-in HTTP, WebSockets, PostgreSQL, SQLite, JSON and SIMD
-tensors. On its benchmark set it runs 1.4× to 8.1× faster than CPython.
+tensors. On its benchmark set it runs 1.4× to 7.9× faster than CPython.
 
-The current release is **1.8.0** ([what's new](https://github.com/anshumali19/GlowLang-core/blob/main/docs/release_notes_1.8.0.md)).
+The current release is **1.9.0** ([what's new](https://github.com/anshumali19/GlowLang-core/blob/main/docs/release_notes_1.9.0.md): generators, `with` blocks and faster calls).
 
 ## Contents
 
-* **[Syntax Guide](syntax.md)** — variables, `when`, `every`, blueprints, named arguments, `match`, sets, `??`, `finally`
+* **[Syntax Guide](syntax.md)** — variables, `when`, `every`, blueprints, named arguments, `match`, sets, `??`, `finally`, generators, `with`
 * **[Tutorial: Building a Counter](tutorials.md)** — your first program
 * **[Concurrency, SIMD and Blueprints](concurrency_and_simd.md)**
 * **[Native Modules](tutorials/flagship_hardware_acceleration.md)** — BLAKE3, JSON, INT4 weights, sockets, PNG headers

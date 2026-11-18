@@ -1,6 +1,6 @@
 # GlowLang Roadmap
 
-The current release is **1.8.0** ([release notes](https://github.com/anshumali19/GlowLang-core/blob/main/docs/release_notes_1.8.0.md)).
+The current release is **1.9.0** ([release notes](https://github.com/anshumali19/GlowLang-core/blob/main/docs/release_notes_1.9.0.md)).
 
 ## Done
 
@@ -22,12 +22,14 @@ The current release is **1.8.0** ([release notes](https://github.com/anshumali19
   stress runs) and macOS; 231 test programs with checked output.
 * ✅ Releases built and tested by CI for Windows x64, Linux x64 and macOS (Apple silicon and
   Intel), and a Microsoft Store version signed by Microsoft.
-* ✅ Faster than CPython 3.14 on every program in the benchmark set (1.4×–8.1×).
+* ✅ Generators (`yield`, `yield from`, `next`) and `with` blocks for resources (1.9.0).
+* ✅ Faster than CPython 3.14 on every program in the benchmark set (1.4×–7.9×).
 
 ## Next
 
-* ⏳ **Faster calls and broader JIT coverage**: cheaper calls with named arguments and
-  `...spread`, fewer exits from compiled code to the interpreter.
+* ⏳ **Decorators** (`@cache`, `@route("/")`) and multi-line input in the REPL.
+* ⏳ **Faster calls and broader JIT coverage**: named-argument calls resolved when the program
+  is compiled, fewer exits from compiled code to the interpreter.
 * ⏳ **Multi-core execution**: today threads share a global interpreter lock.
 * ⏳ **Signed downloads outside the Store**, so the Windows zip runs without SmartScreen warnings.
 

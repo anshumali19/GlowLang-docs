@@ -208,5 +208,34 @@ show parse_age("41")
 show parse_age("-3")
 ```
 
+## 14. Generators
+A function with `yield` in it hands over values one at a time, as they are asked for, so it can
+even be endless. `next(g)` takes one value; `yield from` hands over every item of another
+sequence.
+
+```glow
+func count_up(limit):
+    let i = 0
+    while i < limit:
+        yield i
+        i += 1
+    end
+end
+show [n * n for each n in count_up(4)]   # [0, 1, 4, 9]
+let g = count_up(2)
+show next(g), next(g), next(g, "done")   # 0 1 done
+```
+
+## 15. With Blocks
+`with` uses a resource for a block and lets go of it however the block ends, even on an error.
+Objects take part with `enter()` / `exit(error)` methods, or just `close()`.
+
+```glow
+with sqlite.open(":memory:") as db:
+    sqlite.exec(db, "CREATE TABLE notes (text TEXT)")
+    sqlite.exec(db, "INSERT INTO notes VALUES ('hello')")
+end                                       # db is closed here
+```
+
 The [language reference](https://github.com/anshumali19/GlowLang-core/blob/main/docs/language_reference.md)
 covers every statement, operator and built-in function.
