@@ -1,6 +1,6 @@
 # GlowLang Roadmap
 
-The current release is **1.9.0** ([release notes](https://github.com/anshumali19/GlowLang-core/blob/main/docs/release_notes_1.9.0.md)).
+The current release is **1.10.0** ([release notes](https://github.com/anshumali19/GlowLang-core/blob/main/docs/release_notes_1.10.0.md)).
 
 ## Done
 
@@ -19,17 +19,18 @@ The current release is **1.9.0** ([release notes](https://github.com/anshumali19
 * ✅ Language Server Protocol support and editor integrations (VS Code, Neovim, Sublime, Helix,
   JetBrains).
 * ✅ Continuous integration on Windows, Linux (with AddressSanitizer, interpreter-only and GC
-  stress runs) and macOS; 231 test programs with checked output.
+  stress runs) and macOS; 246 test programs with checked output.
 * ✅ Releases built and tested by CI for Windows x64, Linux x64 and macOS (Apple silicon and
   Intel), and a Microsoft Store version signed by Microsoft.
 * ✅ Generators (`yield`, `yield from`, `next`) and `with` blocks for resources (1.9.0).
-* ✅ Faster than CPython 3.14 on every program in the benchmark set (1.4×–7.9×).
+* ✅ Decorators on functions and methods (`@cache`), `**opts` / `**dict`, multi-line input in
+  the REPL, and named-argument calls matched when the program is compiled (1.10.0).
+* ✅ Faster than CPython 3.14 on every program in the benchmark set (1.5×–7.4×).
 
 ## Next
 
-* ⏳ **Decorators** (`@cache`, `@route("/")`) and multi-line input in the REPL.
-* ⏳ **Faster calls and broader JIT coverage**: named-argument calls resolved when the program
-  is compiled, fewer exits from compiled code to the interpreter.
+* ⏳ **Broader JIT coverage**: fewer exits from compiled code to the interpreter, and named
+  arguments matched when compiling for methods and constructors too.
 * ⏳ **Multi-core execution**: today threads share a global interpreter lock.
 * ⏳ **Signed downloads outside the Store**, so the Windows zip runs without SmartScreen warnings.
 
