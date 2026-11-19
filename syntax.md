@@ -121,7 +121,7 @@ show 0xff, 0b1010, 1_000_000      # 255 10 1000000
 show 6 & 3, 6 | 3, 1 << 10        # 2 7 1024
 ```
 
-## 8. Functions: Defaults, Named Arguments, `...rest` and `...spread`
+## 8. Functions: Defaults, Named Arguments, `...rest`, `**opts` and Spreading
 
 ```glow
 func order(item, qty = 1, gift = false):
@@ -134,6 +134,12 @@ func total(first, ...rest):
 end
 let more = [2, 3, 4]
 show total(1, ...more)            # 10
+
+func tag(name, **attrs):          # **attrs collects the name = value arguments left over
+    return name + " " + str(attrs)
+end
+show tag("p", id = "intro")       # p {"id": "intro"}
+show tag("a", **{"href": "/"})    # a {"href": "/"}
 ```
 
 ## 9. Unpacking
@@ -235,6 +241,32 @@ with sqlite.open(":memory:") as db:
     sqlite.exec(db, "CREATE TABLE notes (text TEXT)")
     sqlite.exec(db, "INSERT INTO notes VALUES ('hello')")
 end                                       # db is closed here
+```
+
+## 16. Decorators
+`@d` above a `func` makes the name hold `d(func)`, as in Python. `functools.cache` remembers
+results; decorators work on methods too.
+
+```glow
+import "functools"
+
+@cache
+func fib(n):
+    when n < 2:
+        return n
+    end
+    return fib(n - 1) + fib(n - 2)
+end
+show fib(90)                              # 2880067194370816120, at once
+
+func shout(f):
+    return lambda(...args, **opts): str(f(...args, **opts)).upper() + "!"
+end
+@shout
+func greet(name):
+    return "hello " + name
+end
+show greet("asha")                        # HELLO ASHA!
 ```
 
 The [language reference](https://github.com/anshumali19/GlowLang-core/blob/main/docs/language_reference.md)
