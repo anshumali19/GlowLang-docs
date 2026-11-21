@@ -8,7 +8,7 @@ compiled code cannot handle continues in the interpreter with the same result. M
 by a generational garbage collector.
 
 ### How fast is it?
-On the benchmark set in the core repository, GlowLang 1.10.0 finishes 1.5× to 7.4× faster than
+On the benchmark set in the core repository, GlowLang 1.11.0 finishes 1.4× to 7.7× faster than
 CPython 3.14 (whole-program time including startup, identical output required). It is much slower
 than compiled languages such as C, Go or Rust. The table is in the
 [core README](https://github.com/anshumali19/GlowLang-core#-performance), and
@@ -56,8 +56,12 @@ CSV loading. CUDA kernels are compiled in only when GlowLang is
 built on a machine with NVIDIA's `nvcc`.
 
 ### Can threads use several CPU cores?
-Not yet. Threads share a global interpreter lock, so they overlap waiting (network, sleep), not
-computation. See [Concurrency](concurrency_and_simd.md).
+Threads share a global interpreter lock, so they overlap waiting (network, sleep), not
+computation. For computation, `parallel.map` (since 1.11.0) runs a function over a list in worker
+processes, one per core: `import "parallel"`, then
+`parallel.map("work.glow", "count_words", files)`. See
+[Using every core](https://github.com/anshumali19/GlowLang-core/blob/main/docs/process_guide.md#using-every-core-import-parallel)
+and [Concurrency](concurrency_and_simd.md).
 
 ### How do I contribute?
 All repositories are public and accept pull requests:

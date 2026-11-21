@@ -217,7 +217,8 @@ show parse_age("-3")
 ## 14. Generators
 A function with `yield` in it hands over values one at a time, as they are asked for, so it can
 even be endless. `next(g)` takes one value; `yield from` hands over every item of another
-sequence.
+sequence; `g.close()` finishes a generator early, running the `finally` blocks around where it
+is paused.
 
 ```glow
 func count_up(limit):
@@ -230,6 +231,10 @@ end
 show [n * n for each n in count_up(4)]   # [0, 1, 4, 9]
 let g = count_up(2)
 show next(g), next(g), next(g, "done")   # 0 1 done
+let h = count_up(10)
+show next(h)                             # 0
+h.close()
+show next(h, "closed")                   # closed
 ```
 
 ## 15. With Blocks
