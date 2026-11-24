@@ -1,6 +1,6 @@
 # GlowLang Roadmap
 
-The current release is **1.12.0** ([release notes](https://github.com/anshumali19/GlowLang-core/blob/main/docs/release_notes_1.12.0.md)).
+The current release is **1.13.0** ([release notes](https://github.com/anshumali19/GlowLang-core/blob/main/docs/release_notes_1.13.0.md)).
 
 ## Done
 
@@ -19,7 +19,7 @@ The current release is **1.12.0** ([release notes](https://github.com/anshumali1
 * ✅ Language Server Protocol support and editor integrations (VS Code, Neovim, Sublime, Helix,
   JetBrains).
 * ✅ Continuous integration on Windows, Linux (with AddressSanitizer, interpreter-only and GC
-  stress runs) and macOS; 255 test programs with checked output.
+  stress runs) and macOS; 284 test programs with checked output.
 * ✅ Releases built and tested by CI for Windows x64, Linux x64 and macOS (Apple silicon and
   Intel), and a Microsoft Store version signed by Microsoft.
 * ✅ Generators (`yield`, `yield from`, `next`) and `with` blocks for resources (1.9.0).
@@ -33,7 +33,10 @@ The current release is **1.12.0** ([release notes](https://github.com/anshumali1
   one-file program for another system; error messages with "did you mean" and the block that is
   missing its `end`; line editing and history in the REPL; spawned threads reused and a GIL
   switch interval, which made concurrent web servers up to 22× faster (1.12.0).
-* ✅ Faster than CPython 3.14 on every program in the benchmark set (1.4×–7.1×).
+* ✅ Standard modules written in GlowLang: `csv`, `toml`, `yaml`, `dotenv`, `template`, `markdown`,
+  `schema`, `url`, `log`, `lru`, `collections`, `semver` and `diff`, each timed against Python;
+  GlowWeb keep-alive, cookies and `PATCH` routes; regular expressions compiled once (1.13.0).
+* ✅ Faster than CPython 3.14 on every program in the benchmark set (1.4×–6.7×).
 
 ## Next
 
