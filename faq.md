@@ -8,7 +8,7 @@ compiled code cannot handle continues in the interpreter with the same result. M
 by a generational garbage collector.
 
 ### How fast is it?
-On the benchmark set in the core repository, GlowLang 1.11.0 finishes 1.4× to 7.7× faster than
+On the benchmark set in the core repository, GlowLang 1.12.0 finishes 1.4× to 7.1× faster than
 CPython 3.14 (whole-program time including startup, identical output required). It is much slower
 than compiled languages such as C, Go or Rust. The table is in the
 [core README](https://github.com/anshumali19/GlowLang-core#-performance), and
@@ -22,6 +22,14 @@ release with one `curl` command: see [Installing GlowLang](README.md#installing-
 ### How do I run a program?
 `glowlang run app.glow`, or just `glowlang app.glow`. With no file, `glowlang` opens a REPL, and
 `glowlang check app.glow` reports syntax errors without running anything.
+
+### How do I start a project?
+
+`glowlang new myapi` makes a working web API (sign-up, login, a SQLite database and tests), and
+`glowlang new mytool --cli` a command-line tool ready to ship as one file. Inside the folder,
+`glowlang test` runs the tests, `glowlang watch app.glow` runs the program again each time you
+save, `glowlang fmt` tidies the indentation, and `glowlang package` makes one executable to copy
+anywhere (`--target linux-x64`, `macos-arm64`, `macos-x64` or `windows-x64` for another system).
 
 ### Is GlowLang like Python?
 Close. Blocks end with `end` instead of depending on indentation, and keywords such as `show`,

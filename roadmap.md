@@ -1,6 +1,6 @@
 # GlowLang Roadmap
 
-The current release is **1.11.0** ([release notes](https://github.com/anshumali19/GlowLang-core/blob/main/docs/release_notes_1.11.0.md)).
+The current release is **1.12.0** ([release notes](https://github.com/anshumali19/GlowLang-core/blob/main/docs/release_notes_1.12.0.md)).
 
 ## Done
 
@@ -28,7 +28,12 @@ The current release is **1.11.0** ([release notes](https://github.com/anshumali1
 * ✅ `parallel.map` over worker processes for every core, `close()` for generators, decorators
   on trait methods, named arguments matched when compiling for methods and constructors, and
   functions using `show` or `throw` compiled (1.11.0).
-* ✅ Faster than CPython 3.14 on every program in the benchmark set (1.4×–7.7×).
+* ✅ Tools: `glowlang new` (a web API or, with `--cli`, a command-line tool), `glowlang watch`
+  (restart on save), `glowlang test`, `glowlang fmt`, and `glowlang package --target` to build a
+  one-file program for another system; error messages with "did you mean" and the block that is
+  missing its `end`; line editing and history in the REPL; spawned threads reused and a GIL
+  switch interval, which made concurrent web servers up to 22× faster (1.12.0).
+* ✅ Faster than CPython 3.14 on every program in the benchmark set (1.4×–7.1×).
 
 ## Next
 
