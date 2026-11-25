@@ -3,9 +3,9 @@
 Guides for [GlowLang](https://github.com/anshumali19/GlowLang-core), a fast, free programming
 language with Python-like, natural-language syntax: a bytecode VM with x86-64 and ARM64 JITs, a
 generational garbage collector, and built-in HTTP, WebSockets, PostgreSQL, SQLite, JSON and SIMD
-tensors. On its benchmark set it runs 1.4× to 6.7× faster than CPython.
+tensors. On its benchmark set it runs 1.4× to 7.9× faster than CPython.
 
-The current release is **1.13.0** ([what's new](https://github.com/anshumali19/GlowLang-core/blob/main/docs/release_notes_1.13.0.md): thirteen standard modules written in GlowLang, among them CSV, TOML, YAML, `.env` files, templates, Markdown, JSON Schema, URLs and logging; GlowWeb keep-alive, cookies and `PATCH` routes; and regular expressions compiled once).
+The current release is **1.14.0** ([what's new](https://github.com/anshumali19/GlowLang-core/blob/main/docs/release_notes_1.14.0.md): five more standard modules written in GlowLang (`cron` schedules, `ini` files, `retry` with growing waits, `textwrap` and `humanize`), writing TOML and YAML, YAML anchors, `format` checks in JSON Schema, shortest diffs for large changes, `.env` files from `glowlang new`, and faster `toml`, `csv`, `url` and `semver`).
 
 ## Contents
 

@@ -8,7 +8,7 @@ compiled code cannot handle continues in the interpreter with the same result. M
 by a generational garbage collector.
 
 ### How fast is it?
-On the benchmark set in the core repository, GlowLang 1.13.0 finishes 1.4× to 6.7× faster than
+On the benchmark set in the core repository, GlowLang 1.14.0 finishes 1.4× to 7.9× faster than
 CPython 3.14 (whole-program time including startup, identical output required). It is much slower
 than compiled languages such as C, Go or Rust. The table is in the
 [core README](https://github.com/anshumali19/GlowLang-core#-performance), and
@@ -31,10 +31,12 @@ release with one `curl` command: see [Installing GlowLang](README.md#installing-
 save, `glowlang fmt` tidies the indentation, and `glowlang package` makes one executable to copy
 anywhere (`--target linux-x64`, `macos-arm64`, `macos-x64` or `windows-x64` for another system).
 
-### Can it read CSV, YAML or TOML files?
-Yes. `import "csv"`, `import "yaml"` or `import "toml"` and call `parse` or `read`; `dotenv`
-loads a `.env` file. Other standard modules: `template` and `markdown` for HTML, `schema` to
-check JSON, `url`, `log`, `lru` (a cache), `collections`, `semver` and `diff`. They are written in
+### Can it read CSV, YAML, TOML or INI files?
+Yes. `import "csv"`, `import "yaml"`, `import "toml"` or `import "ini"` and call `parse` or
+`read`; YAML, TOML and INI can be written back with `stringify` or `write`, and `dotenv` loads a
+`.env` file. Other standard modules: `template` and `markdown` for HTML, `schema` to check JSON,
+`url`, `log`, `lru` (a cache), `collections`, `semver`, `diff`, `cron` (when a schedule next
+runs), `retry`, `textwrap` and `humanize`. They are written in
 GlowLang and described in the
 [language reference](https://github.com/anshumali19/GlowLang-core/blob/main/docs/language_reference.md#18-standard-library);
 [benchmarks/libs](https://github.com/anshumali19/GlowLang-core/blob/main/benchmarks/libs/README.md)

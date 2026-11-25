@@ -1,6 +1,6 @@
 # GlowLang Roadmap
 
-The current release is **1.13.0** ([release notes](https://github.com/anshumali19/GlowLang-core/blob/main/docs/release_notes_1.13.0.md)).
+The current release is **1.14.0** ([release notes](https://github.com/anshumali19/GlowLang-core/blob/main/docs/release_notes_1.14.0.md)).
 
 ## Done
 
@@ -19,7 +19,7 @@ The current release is **1.13.0** ([release notes](https://github.com/anshumali1
 * ✅ Language Server Protocol support and editor integrations (VS Code, Neovim, Sublime, Helix,
   JetBrains).
 * ✅ Continuous integration on Windows, Linux (with AddressSanitizer, interpreter-only and GC
-  stress runs) and macOS; 284 test programs with checked output.
+  stress runs) and macOS; 289 test programs with checked output.
 * ✅ Releases built and tested by CI for Windows x64, Linux x64 and macOS (Apple silicon and
   Intel), and a Microsoft Store version signed by Microsoft.
 * ✅ Generators (`yield`, `yield from`, `next`) and `with` blocks for resources (1.9.0).
@@ -36,7 +36,10 @@ The current release is **1.13.0** ([release notes](https://github.com/anshumali1
 * ✅ Standard modules written in GlowLang: `csv`, `toml`, `yaml`, `dotenv`, `template`, `markdown`,
   `schema`, `url`, `log`, `lru`, `collections`, `semver` and `diff`, each timed against Python;
   GlowWeb keep-alive, cookies and `PATCH` routes; regular expressions compiled once (1.13.0).
-* ✅ Faster than CPython 3.14 on every program in the benchmark set (1.4×–6.7×).
+* ✅ `cron`, `ini`, `retry`, `textwrap` and `humanize`; writing TOML and YAML; YAML anchors; JSON
+  Schema `format` checks; shortest diffs in linear space; faster `toml`, `csv`, `url` and
+  `semver` (1.14.0).
+* ✅ Faster than CPython 3.14 on every program in the benchmark set (1.4×–7.9×).
 
 ## Next
 
